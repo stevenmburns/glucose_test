@@ -68,7 +68,7 @@ static const char* _certified = "CORE -- CERTIFIED UNSAT";
 void printStats(Solver& solver)
 {
     double cpu_time = cpuTime();
-    double mem_used = 0;//memUsedPeak();
+    //    double mem_used = 0;//memUsedPeak();
     printf("c restarts              : %" PRIu64" (%" PRIu64" conflicts in avg)\n", solver.starts,(solver.starts>0 ?solver.conflicts/solver.starts : 0));
     printf("c blocked restarts      : %" PRIu64" (multiple: %" PRIu64") \n", solver.stats[nbstopsrestarts],solver.stats[nbstopsrestartssame]);
     printf("c last block at restart : %" PRIu64"\n",solver.stats[lastblockatrestart]);
@@ -87,7 +87,7 @@ void printStats(Solver& solver)
     //    printf("c Average resolutions   : %-12" PRIu64"   (%.0f seen ones)\n",solver.stats[sumRes]/solver.conflicts,((double)solver.stats[sumResSeen])/solver.conflicts);
     printf("c nb reduced Clauses    : %" PRIu64"\n",solver.stats[nbReducedClauses]);
 
-    if (mem_used != 0) printf("Memory used           : %.2f MB\n", mem_used);
+    //    if (mem_used != 0) printf("Memory used           : %.2f MB\n", mem_used);
     printf("c CPU time              : %g s\n", cpu_time);
 }
 
@@ -264,7 +264,7 @@ int main(int argc, char** argv)
         if (S.verbosity > 0){
             printStats(S);
             printf("\n"); }
-        printf(ret == l_True ? "s SATISFIABLE\n" : ret == l_False ? "s UNSATISFIABLE\n" : "s INDETERMINATE\n");
+        printf( "%s", ret == l_True ? "s SATISFIABLE\n" : ret == l_False ? "s UNSATISFIABLE\n" : "s INDETERMINATE\n");
 
         if (res != NULL){
             if (ret == l_True){

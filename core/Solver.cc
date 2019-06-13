@@ -406,7 +406,7 @@ bool Solver::addClause_(vec <Lit> &ps) {
     Lit p;
     int i, j, flag = 0;
     if(certifiedUNSAT) {
-        for(i = j = 0, p = lit_Undef; i < ps.size(); i++) {
+        for(i = 0, p = lit_Undef; i < ps.size(); i++) {
             oc.push(ps[i]);
             if(value(ps[i]) == l_True || ps[i] == ~p || value(ps[i]) == l_False)
                 flag = 1;
